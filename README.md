@@ -23,6 +23,25 @@ add-on once a human has traced nets.
             Tesseract assist)       JSON)            reference signatures)    schematic)
 ```
 
+## Sample outputs
+
+**Generated matching circuit** — the identified circuit, synthesized and rendered from the 6G6-C reference signature:
+
+<img src="docs/images/bassman_6g6c_generated.svg" alt="Generated Fender Bassman 6G6-C schematic" width="100%">
+
+**Provenance dossier** — the offline demo verdict; every row cites its source image (excerpt):
+
+| | Feature | Expected | Observed |
+|---|---|---|---|
+| ✓ | tube:5881 | 5881 | 5881 |
+| ✓ | tube:7025 | 7025 | 7025 |
+| · | rectifier_type | solid_state | unknown |
+| · | transformer:125P7A | 125P7A | — *(non-OE, excluded)* |
+
+> **6G6-B · 37% · genuine (modified)** — runner-up 6G6-C. Family confirmed from period-correct construction; recap + non-OE transformers flag *modified*; 6G6-B vs 6G6-C left open (an honest under-call, not a guess).
+
+More renders from `sripper generate`: [block diagram](docs/images/6G6-C_block.svg) · [detailed gain stage](docs/images/6G6-C_gainstage.svg).
+
 ## Quickstart
 
 ```bash

@@ -62,6 +62,25 @@ def test_value_match_is_boundary_aware():
     assert discriminators._value_present(pot, "1M") is True
 
 
+def test_non_oe_transformer_excluded_from_authenticity():
+    # A replaced (non-OE) transformer is service history, not a clone signal — and
+    # its stamp must not be used as genuineness evidence even if the PN matches.
+    bom = BOM(
+        source="t",
+        items=[
+            Component(type=ComponentType.TUBE, part_number="5881", provenance=_human()),
+            Component(
+                type=ComponentType.TRANSFORMER, part_number="125A13A",
+                provenance=[Provenance(method=ExtractionMethod.HUMAN,
+                                       note="non-OE replacement output transformer")],
+            ),
+        ],
+    )
+    report = provenance.assess(bom, _bassman_signatures())
+    assert report.is_modified is True
+    assert report.genuine_vs_clone != "clone"
+
+
 def test_recap_flagged_modified_not_clone():
     bom = BOM(
         source="t",

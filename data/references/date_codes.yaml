@@ -22,3 +22,9 @@ construction_cues:
   period_correct_resistors: ["carbon composition", "Stackpole", "Allen-Bradley"]
   service_replacement_caps: ["Sprague Atom", "Nichicon", "F&T", "modern Vishay"]
   wire: "cloth-covered push-back (yellow/tan) is correct for the era"
+  replaceable_parts: ["filter caps", "coupling caps", "power transformer", "output transformer", "choke", "tubes"]
+  provenance_note: >
+    Transformers, filter/coupling caps and tubes are commonly replaced in service.
+    Non-OE (aftermarket) transformer part-number stamps are NOT provenance evidence
+    — they reflect a re-transformer, not the amp's origin. Date the amp from chassis
+    stamps, pot date codes, and surviving original-part date codes instead.

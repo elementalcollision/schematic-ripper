@@ -10,33 +10,52 @@ Two independent axes:
 
 from __future__ import annotations
 
-from ..models import BOM, CircuitSignature, ProvenanceReport
+from ..models import BOM, CircuitSignature, ComponentType, ProvenanceReport
 from . import discriminators
 
+# Notes that mark a part as a service replacement / non-original.
+_REPLACEMENT_PREFIXES = ("modern", "replacement", "non-oe", "non-original", "reissue")
 
-def _is_modified(bom: BOM) -> bool:
+
+def _is_replacement(comp) -> bool:
     return any(
-        (p.note or "").lower().startswith("modern")
-        for c in bom.items
-        for p in c.provenance
+        (p.note or "").lower().startswith(_REPLACEMENT_PREFIXES) for p in comp.provenance
     )
 
 
-def _genuine_vs_clone(bom: BOM, top: CircuitSignature, rows) -> str:
-    # Transformer part-number agreement is the strongest genuineness signal.
-    tx_rows = [r for r in rows if r.feature.startswith("transformer:")]
-    tx_matches = sum(1 for r in tx_rows if r.verdict == "match")
-    tx_mismatch = any(r.verdict == "mismatch" for r in tx_rows)
+def _is_modified(bom: BOM) -> bool:
+    return any(_is_replacement(c) for c in bom.items)
 
-    if tx_mismatch:
-        return "clone"
-    if tx_matches >= 1:
+
+def _genuine_vs_clone(bom: BOM, top: CircuitSignature, rows) -> str:
+    """Authenticity rests on ORIGINAL construction, not on swappable iron.
+
+    Transformers and filter caps are routinely replaced, so a non-OE transformer
+    says nothing about whether the amp is a genuine example — that is service
+    history, captured separately as ``is_modified``. We judge genuine/clone from
+    period-correct construction among the *non-replaced* parts, plus an original
+    (non-replaced) transformer stamp if one happens to match. 'clone' is asserted
+    only on a positive signal; absent one we say 'indeterminate' rather than guess.
+    """
+    matched_pns = {
+        r.expected.upper()
+        for r in rows
+        if r.feature.startswith("transformer:") and r.verdict == "match" and r.expected
+    }
+    original_tx_match = any(
+        not _is_replacement(c) and (c.part_number or "").upper() in matched_pns
+        for c in bom.items
+        if c.type in (ComponentType.TRANSFORMER, ComponentType.CHOKE)
+    )
+
+    vintage_makers = {"sprague", "good-all", "astron", "cornell", "cornell-dubilier"}
+    original_makers = {
+        (c.manufacturer or "").lower() for c in bom.items if not _is_replacement(c)
+    }
+    construction_genuine = bool(original_makers & vintage_makers)
+
+    if original_tx_match or construction_genuine:
         return "genuine"
-    # No transformer evidence either way: fall back to construction coherence.
-    vintage_makers = {"sprague", "good-all", "astron", "cornell"}
-    seen = {(c.manufacturer or "").lower() for c in bom.items}
-    if seen & vintage_makers:
-        return "genuine"  # period-correct construction, pending transformer read
     return "indeterminate"
 
 

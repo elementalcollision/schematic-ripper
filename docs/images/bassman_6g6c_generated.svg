@@ -1,0 +1,139 @@
+<svg width="100%" viewBox="0 0 680 560" role="img" xmlns="http://www.w3.org/2000/svg" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, sans-serif">
+<title>Generated matching circuit for the Fender Bassman 6G6-C</title>
+<desc>Synthesized signal-path schematic: two input channels feed a 7025 preamp, a Bass/Treble/Presence tone stack, a 7025 phase inverter, a push-pull pair of 5881 power tubes, output transformer 125A13A, and an 8-ohm speaker. A separate power-supply chain runs from the 117 VAC inlet through power transformer 125P7A, a solid-state silicon rectifier, choke 125C1A, and filter caps to a B-plus high-tension bus. Provenance: 6G6 family, genuine but modified.</desc>
+<rect x="2" y="2" width="676" height="556" rx="14" fill="#ffffff" stroke="#e6e9ee" stroke-width="1.5"/>
+
+<!-- Header -->
+<text x="40" y="34" font-size="19" font-weight="700" fill="#0e7c5a">Generated Matching Circuit</text>
+<text x="40" y="54" font-size="11.5" fill="#52606d">Fender “Bassman” 6G6-C reference — family match to the specimen</text>
+<rect x="471" y="20" width="169" height="38" rx="19" fill="none" stroke="#cbd2d9" stroke-width="1.3"/>
+<circle cx="487" cy="39" r="4.5" fill="#0e7c5a"/>
+<text x="499" y="36" font-size="10.5" font-weight="700" fill="#1f2933">6G6-B / 6G6-C family</text>
+<text x="499" y="49" font-size="9.5" fill="#52606d">genuine · modified</text>
+
+<text x="40" y="90" font-size="10" letter-spacing="2" fill="#9aa5b1">SIGNAL PATH</text>
+
+<!-- B+ / HT bus (dashed) -->
+<g stroke="#9aa5b1" stroke-width="1.2" fill="none" stroke-dasharray="4 3">
+<path d="M455,388 H490 V110 H135"/>
+<path d="M135,110 V134"/><path d="M370,110 V134"/><path d="M455,110 V116"/>
+</g>
+<text x="498" y="108" font-size="9.5" fill="#9aa5b1">B+ / HT bus ≈ 430 V</text>
+
+<!-- Signal wiring -->
+<g stroke="#0e7c5a" stroke-width="1.7" fill="none">
+<path d="M61,138 H95"/><path d="M61,178 H95"/>
+<path d="M95,138 L120,150"/><path d="M95,178 L120,150"/>
+<path d="M150,150 H300"/>
+<path d="M288,150 H353"/>
+<path d="M385,150 L440,128"/><path d="M385,150 L440,172"/>
+<path d="M470,128 L524,150"/><path d="M470,172 L524,150"/>
+<path d="M556,150 H594"/>
+</g>
+<g fill="#0e7c5a"><path d="M196,146 l8,4 l-8,4 Z"/><path d="M347,146 l8,4 l-8,4 Z"/><path d="M588,146 l8,4 l-8,4 Z"/></g>
+
+<!-- Input jacks -->
+<g stroke="#1f2933" stroke-width="1.4" fill="none"><circle cx="56" cy="138" r="5"/><circle cx="56" cy="178" r="5"/></g>
+<text x="34" y="124" font-size="9" fill="#52606d">NORMAL</text>
+<text x="40" y="198" font-size="9" fill="#52606d">BASS</text>
+
+<!-- Preamp triode (x2 7025) -->
+<g stroke="#1f2933" stroke-width="1.4" fill="none">
+<circle cx="135" cy="150" r="15"/>
+<path d="M127,143 H143"/><path d="M126,151 H144" stroke-dasharray="3 2"/>
+<path d="M129,158 L135,154 L141,158"/><path d="M135,158 V172"/>
+</g>
+<g stroke="#1f2933" stroke-width="1.3" fill="none"><path d="M128,172 H142"/><path d="M131,176 H139"/><path d="M134,180 H136"/></g>
+<text x="106" y="200" font-size="9.5" fill="#52606d">PREAMP · 2× 7025</text>
+
+<!-- Tone stack -->
+<g stroke="#1f2933" stroke-width="1.4" fill="none">
+<rect x="203" y="143" width="14" height="14"/><path d="M210,134 V143"/>
+<rect x="238" y="143" width="14" height="14"/><path d="M245,134 V143"/>
+<rect x="273" y="143" width="14" height="14"/><path d="M280,134 V143"/>
+</g>
+<g fill="#1f2933"><path d="M207,138 l3,5 l3,-5 Z"/><path d="M242,138 l3,5 l3,-5 Z"/><path d="M277,138 l3,5 l3,-5 Z"/></g>
+<text x="198" y="174" font-size="8.5" fill="#52606d">250K</text>
+<text x="233" y="174" font-size="8.5" fill="#52606d">250K</text>
+<text x="268" y="174" font-size="8.5" fill="#52606d">25K</text>
+<text x="196" y="200" font-size="9.5" fill="#52606d">TONE · Bass / Treb / Pres</text>
+
+<!-- Phase inverter -->
+<g stroke="#1f2933" stroke-width="1.4" fill="none">
+<circle cx="370" cy="150" r="15"/>
+<path d="M362,143 H378"/><path d="M361,151 H379" stroke-dasharray="3 2"/>
+<path d="M364,158 L370,154 L376,158"/><path d="M370,158 V172"/>
+</g>
+<g stroke="#1f2933" stroke-width="1.3" fill="none"><path d="M363,172 H377"/><path d="M366,176 H374"/><path d="M369,180 H371"/></g>
+<text x="342" y="200" font-size="9.5" fill="#52606d">PHASE INV · 7025</text>
+
+<!-- Power pentodes (push-pull 5881) -->
+<g stroke="#1f2933" stroke-width="1.4" fill="none">
+<circle cx="455" cy="128" r="13"/>
+<path d="M448,122 H462"/><path d="M447,128 H463" stroke-dasharray="3 2"/><path d="M447,133 H463" stroke-dasharray="2 2"/>
+<circle cx="455" cy="172" r="13"/>
+<path d="M448,166 H462"/><path d="M447,172 H463" stroke-dasharray="3 2"/><path d="M447,177 H463" stroke-dasharray="2 2"/>
+</g>
+<text x="420" y="210" font-size="9.5" fill="#52606d">POWER · 2× 5881 (PP)</text>
+
+<!-- Output transformer -->
+<g stroke="#1f2933" stroke-width="1.4" fill="none">
+<path d="M532,135 c-7,3 -7,7 0,10 c-7,3 -7,7 0,10"/>
+<path d="M548,135 c7,3 7,7 0,10 c7,3 7,7 0,10"/>
+<path d="M538,133 V167"/><path d="M542,133 V167"/>
+</g>
+<text x="512" y="186" font-size="9.5" fill="#52606d">OT · 125A13A</text>
+
+<!-- Speaker -->
+<g stroke="#1f2933" stroke-width="1.4" fill="none">
+<rect x="596" y="143" width="7" height="14"/><path d="M603,143 L615,137 V163 L603,157 Z"/>
+</g>
+<text x="592" y="178" font-size="9.5" fill="#52606d">SPKR · 8Ω</text>
+
+<text x="40" y="320" font-size="10" letter-spacing="2" fill="#9aa5b1">POWER SUPPLY</text>
+
+<!-- Supply wiring -->
+<g stroke="#1f2933" stroke-width="1.5" fill="none">
+<path d="M72,400 H132"/><path d="M178,400 H236"/><path d="M278,400 H332"/><path d="M372,400 H447"/>
+</g>
+
+<!-- AC inlet -->
+<g stroke="#1f2933" stroke-width="1.4" fill="none"><circle cx="56" cy="393" r="3.4"/><circle cx="56" cy="407" r="3.4"/></g>
+<text x="34" y="428" font-size="9.5" fill="#52606d">117 VAC</text>
+
+<!-- Power transformer -->
+<g stroke="#1f2933" stroke-width="1.4" fill="none">
+<path d="M147,385 c-7,3 -7,7 0,10 c-7,3 -7,7 0,10"/>
+<path d="M163,385 c7,3 7,7 0,10 c7,3 7,7 0,10"/>
+<path d="M153,383 V417"/><path d="M157,383 V417"/>
+</g>
+<text x="120" y="436" font-size="9.5" fill="#52606d">PWR XFMR · 125P7A</text>
+
+<!-- SS rectifier -->
+<g stroke="#1f2933" stroke-width="1.4" fill="none">
+<path d="M246,388 L246,400 L258,394 Z"/><path d="M258,388 V400"/>
+<path d="M246,402 L246,414 L258,408 Z"/><path d="M258,402 V414"/>
+</g>
+<text x="232" y="436" font-size="9.5" fill="#52606d">SS RECT · silicon</text>
+
+<!-- Choke -->
+<g stroke="#1f2933" stroke-width="1.5" fill="none">
+<path d="M336,400 a5,5 0 0 1 10,0 a5,5 0 0 1 10,0 a5,5 0 0 1 10,0"/>
+</g>
+<text x="324" y="436" font-size="9.5" fill="#52606d">CHOKE · 125C1A</text>
+
+<!-- Filter cap + B+ node -->
+<g stroke="#1f2933" stroke-width="1.5" fill="none">
+<path d="M455,388 V396"/><path d="M447,396 H463"/><path d="M447,401 H463"/><path d="M455,401 V410"/>
+<path d="M448,410 H462"/><path d="M451,413 H459"/><path d="M453,416 H457"/>
+</g>
+<circle cx="455" cy="388" r="2.4" fill="#0e7c5a"/>
+<text x="436" y="436" font-size="9.5" fill="#52606d">FILTER · B+ ≈ 430 V</text>
+
+<!-- Legend + footer -->
+<g font-size="10" fill="#52606d">
+<line x1="40" y1="496" x2="66" y2="496" stroke="#0e7c5a" stroke-width="1.7"/><text x="72" y="499">signal path</text>
+<line x1="168" y1="496" x2="194" y2="496" stroke="#9aa5b1" stroke-width="1.2" stroke-dasharray="4 3"/><text x="200" y="499">B+ / HT supply</text>
+</g>
+<text x="40" y="528" font-size="9" fill="#9aa5b1">Generated by Schematic Ripper · generate/schematic.py · values from data/references/bassman_6g6c.yaml</text>
+</svg>

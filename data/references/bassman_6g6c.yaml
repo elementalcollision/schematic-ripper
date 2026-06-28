@@ -21,6 +21,7 @@ signature:
     plate_supply: "430V"     # +430V / +428V / +420V plate rail (per schematic)
   date_code_range: [1963, 1964]
   notes: >
-    Electrically near-identical to 6G6-B. The strongest positive identification
-    of 6G6-C over 6G6-B is the full set of transformer part numbers
-    125P7A / 125C1A / 125A13A stamped on the iron, plus the +430V plate rail.
+    Electrically near-identical to 6G6-B. Transformer part numbers
+    125P7A / 125C1A / 125A13A are a positive ID for 6G6-C ONLY when the iron is
+    original — a re-transformered (non-OE) amp must be told from 6G6-B by the
+    bias/coupling-cap values and dated from pots and chassis stamps instead.
