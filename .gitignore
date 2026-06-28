@@ -16,6 +16,7 @@ uv.lock
 
 # --- CodeGraph (local, rebuildable index) ---
 .codegraph/
+.cursor/
 
 # --- Schematic Ripper ---
 # Per-analysis outputs are reproducible from inputs; don't version them.
