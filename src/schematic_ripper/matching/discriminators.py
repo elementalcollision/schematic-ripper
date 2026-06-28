@@ -14,7 +14,8 @@ from __future__ import annotations
 
 import re
 
-from ..models import BOM, CircuitSignature, FeatureMatch
+from .. import values
+from ..models import BOM, CircuitSignature, ComponentType, FeatureMatch
 
 # Weights — hard discriminators dominate.
 W_RECTIFIER = 5.0
@@ -24,11 +25,18 @@ W_VALUE = 1.0
 
 
 def _value_present(bom: BOM, value: str) -> bool:
-    """Whole-token value search. Boundary-aware so a pot value like "1M" does not
-    spuriously match inside a cap marking such as ".1mfd"."""
-    target = value.strip().lower()
-    pat = re.compile(r"(?<![a-z0-9.])" + re.escape(target) + r"(?![a-z0-9])")
+    """Match a diagnostic value against the BOM. Prefers a tolerance-aware compare
+    of canonical SI values (so 100k == 0.1M == 100kΩ); falls back to a
+    boundary-aware string search that won't match "1M" inside ".1mfd"."""
+    target_ohms = values.parse_resistor(value)
+    pat = re.compile(r"(?<![a-z0-9.])" + re.escape(value.strip().lower()) + r"(?![a-z0-9])")
     for c in bom.items:
+        if (
+            target_ohms is not None
+            and c.type in (ComponentType.RESISTOR, ComponentType.POT)
+            and values.values_close(target_ohms, c.value_si)
+        ):
+            return True
         for field in (c.value, c.raw_marking):
             if field and pat.search(field.lower()):
                 return True

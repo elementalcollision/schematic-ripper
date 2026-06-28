@@ -95,5 +95,34 @@ def generate(
     console.print(f"Wrote [cyan]{block}[/cyan] and [cyan]{stage}[/cyan]")
 
 
+@app.command()
+def decode(
+    marking: str = typer.Argument(None, help="A printed marking, e.g. '.1mfd 400vdc' or '220k'."),
+    bands: str = typer.Option(None, "--bands", help="Resistor colour bands, space-separated."),
+) -> None:
+    """Parse a component marking or resistor colour bands into a normalized value."""
+    from . import values
+
+    if bands:
+        rv = values.decode_resistor_bands(bands.split())
+        if rv:
+            console.print(f"resistor: [bold]{values.format_ohms(rv[0])}[/bold] ±{rv[1]}  ({rv[0]:g} Ω)")
+        else:
+            console.print("[red]could not decode those bands[/red]")
+        return
+    if not marking:
+        raise typer.BadParameter("provide a MARKING argument or --bands")
+    farads, volts = values.parse_capacitor(marking)
+    if farads is not None:
+        v = f" @ {volts}" if volts else ""
+        console.print(f"capacitor: [bold]{values.format_farads(farads)}[/bold]{v}  ({farads:g} F)")
+        return
+    ohms = values.parse_resistor(marking)
+    if ohms is not None:
+        console.print(f"resistor: [bold]{values.format_ohms(ohms)}[/bold]  ({ohms:g} Ω)")
+        return
+    console.print("[yellow]no value parsed[/yellow]")
+
+
 if __name__ == "__main__":
     app()

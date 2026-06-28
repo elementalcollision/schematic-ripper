@@ -18,7 +18,8 @@ Rules:
 - Only report what is legible. If a value is unreadable, omit it — never guess.
 - Preserve original markings exactly, including vintage notation like ".1mfd",
   "MFD", "V.D.C.", "OUTSIDE FOIL".
-- Read resistor colour bands when visible and give the decoded value.
+- For carbon-composition resistors, report the colour bands left-to-right in
+  `color_bands` (do not decode them — the parser does that deterministically).
 - Identify tube types from glass/socket silkscreen (e.g. 5881, 7025, GZ34).
 - Read transformer/choke part-number and date-code stamps when present —
   these are the strongest provenance evidence.
@@ -46,7 +47,9 @@ EXTRACT_TOOL = {
                             ],
                             "description": "Component type code.",
                         },
-                        "value": {"type": "string", "description": "Normalized value, e.g. '220k', '0.1uF'."},
+                        "value": {"type": "string", "description": "Printed value if legible, e.g. '220k', '0.1uF'."},
+                        "color_bands": {"type": "array", "items": {"type": "string"}, "description": "Resistor colour bands left-to-right, e.g. ['brown','black','red','gold']. Report colours; do not decode."},
+                        "tolerance": {"type": "string", "description": "e.g. '5%', '10%'."},
                         "raw_marking": {"type": "string", "description": "Verbatim printed text."},
                         "voltage": {"type": "string"},
                         "part_number": {"type": "string"},

@@ -59,9 +59,12 @@ class Component(BaseModel):
 
     type: ComponentType
     ref: str | None = None            # designator if known: "R12", "C7", "V1"
-    value: str | None = None          # normalized: "220k", "0.1uF", "20uF"
+    value: str | None = None          # normalized human form: "4.7kΩ", "0.1µF"
+    value_si: float | None = None     # canonical SI: ohms (R/RV), farads (C/CE)
+    tolerance: str | None = None      # "5%", "10%"
     raw_marking: str | None = None    # verbatim: ".1mfd 400vdc Made in U.S."
     voltage: str | None = None        # "400VDC", "500VDC"
+    color_bands: list[str] = Field(default_factory=list)  # resistor bands, read order
     part_number: str | None = None    # "125P7A", "5881", "7025"
     manufacturer: str | None = None   # "Sprague", "Good-All", "Nichicon"
     date_code: str | None = None      # raw stamp, e.g. "606", "137-XXX"

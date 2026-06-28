@@ -11,6 +11,7 @@ from __future__ import annotations
 import base64
 from pathlib import Path
 
+from .. import values
 from ..models import Component, ComponentType, ExtractionMethod, Provenance
 from . import prompts
 
@@ -69,23 +70,25 @@ def _to_components(raw: list[dict], source_image: str) -> list[Component]:
     out: list[Component] = []
     for r in raw:
         note = "modern replacement" if r.get("is_modern_replacement") else None
-        out.append(
-            Component(
-                type=ComponentType(r["type"]),
-                value=r.get("value"),
-                raw_marking=r.get("raw_marking"),
-                voltage=r.get("voltage"),
-                part_number=r.get("part_number"),
-                manufacturer=r.get("manufacturer"),
-                date_code=r.get("date_code"),
-                provenance=[
-                    Provenance(
-                        method=ExtractionMethod.CLAUDE_VISION,
-                        confidence=float(r.get("confidence", 0.5)),
-                        source_image=source_image,
-                        note=note,
-                    )
-                ],
-            )
+        comp = Component(
+            type=ComponentType(r["type"]),
+            value=r.get("value"),
+            raw_marking=r.get("raw_marking"),
+            voltage=r.get("voltage"),
+            part_number=r.get("part_number"),
+            manufacturer=r.get("manufacturer"),
+            date_code=r.get("date_code"),
+            color_bands=r.get("color_bands", []),
+            tolerance=r.get("tolerance"),
+            provenance=[
+                Provenance(
+                    method=ExtractionMethod.CLAUDE_VISION,
+                    confidence=float(r.get("confidence", 0.5)),
+                    source_image=source_image,
+                    note=note,
+                )
+            ],
         )
+        # Deterministic value parsing/normalization over the model's raw reads.
+        out.append(values.normalize_component(comp))
     return out

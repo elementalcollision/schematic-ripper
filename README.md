@@ -50,6 +50,8 @@ uv run sripper references                               # list reference signatu
 uv run sripper analyze --bom tests/fixtures/sample_bom.json   # match offline (no API)
 uv run sripper extract                                  # live vision pass (needs ANTHROPIC_API_KEY)
 uv run sripper generate 6G6-C --out runs/               # render the matched circuit (needs `eda` extra)
+uv run sripper decode --bands "yellow violet orange gold"     # colour bands -> 47kΩ ±5%
+uv run sripper decode ".1mfd 400vdc"                          # vintage marking -> 100nF @ 400VDC
 ```
 
 Install extras as needed: `uv pip install -e '.[vision,eda,graph]'`.
@@ -60,6 +62,7 @@ Install extras as needed: `uv pip install -e '.[vision,eda,graph]'`.
 |---|---|
 | `src/schematic_ripper/models.py` | the shared pydantic data spine — import everywhere |
 | `src/schematic_ripper/vision/` | Claude multimodal extraction + Tesseract assist |
+| `src/schematic_ripper/values.py` | deterministic value parsing — cap/resistor codes, colour bands, SI normalization |
 | `src/schematic_ripper/reference/` | YAML ground-truth fixtures + date-code decoding |
 | `src/schematic_ripper/matching/` | discriminator scorecard (v1) + VF2 confirm (v2) |
 | `src/schematic_ripper/generate/` | schemdraw schematic / layout / SPICE (v3) |

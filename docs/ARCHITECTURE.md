@@ -21,6 +21,12 @@ question.
    emits a structured component list per photo via a forced tool call
    (`prompts.py`). Tesseract/OpenCV (`ocr.py`) optionally deskew + crop label
    regions to feed cleaner inputs. **Identity only — never connectivity.**
+2a. **Value normalization** (`values.py`) — raw reads are decoded deterministically:
+   vintage cap/resistor notation (".1mfd" → 100 nF, "MFD" == µF), resistor
+   **colour-band decoding**, and SI canonicalization (ohms/farads) into
+   `value_si` so the matcher compares values, not strings. The model reports
+   colour bands and verbatim markings; the parser — not the model — decodes them,
+   so a misremembered decode can't corrupt a value.
 3. **Human confirmation** — the merged BOM is written to JSON, reviewed/edited by
    a human, and reloaded. Vision can misread a value; nothing unconfirmed drives a
    verdict.
@@ -37,6 +43,10 @@ question.
 
 ## Key decisions
 
+- **Deterministic value parsing over model-decoded values.** Vision reports
+  colour bands + verbatim markings; `values.py` decodes them with fixed tables and
+  regex. SI-normalized values let the matcher treat `100k`, `0.1M`, and `100kΩ` as
+  equal within tolerance.
 - **Scorecard, not graph-edit-distance.** GED is NP-hard and `networkx`'s optimal
   solver can fail to terminate; it would buy nothing against a tiny known library
   whose members differ by local features. VF2 subgraph isomorphism
