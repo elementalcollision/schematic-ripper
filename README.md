@@ -38,8 +38,9 @@ add-on once a human has traced nets.
 | ✓ | transformer:125C1A | 125C1A | 125C1A *(original choke, 1964)* |
 | · | transformer:125P7A | 125P7A | — *(power xfmr is non-OE)* |
 | · | rectifier_type | solid_state | unknown |
+| ✓ | date_code | 1963–1964 | 1964 *(choke + tube chart)* |
 
-> **First pass (9 photos): 6G6-B · 37%.** After enhancing four more photos to read the chassis & iron codes, the original `125C1A` choke (1964) flips it to **6G6-C · 38% · genuine (modified)** — runner-up 6G6-B. The two replaced transformers are flagged as modification, not a clone.
+> **First pass (9 photos): 6G6-B · 37%.** Enhancing four more photos to read the chassis & iron codes — plus the tube-chart date (`N` = 1964) — sharpens it to **6G6-C · 56% · genuine (modified)**, runner-up 6G6-B: the original `125C1A` choke and the 1964 build date (read off both the choke and the tube chart) land inside 6G6-C's window and outside 6G6-B's. The replaced transformers register as modification, not a clone.
 
 **Reading a faint code** — `vision/enhance.py` crops, upscales, de-rotates and contrast-boosts a region so a stamped/inked code becomes legible. The stamped chassis serial — **BP11840**, whose `BP` prefix is Fender's Bassman-Piggyback code — recovered from a phone photo:
 

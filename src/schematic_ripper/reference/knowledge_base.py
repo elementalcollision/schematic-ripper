@@ -55,3 +55,39 @@ def decode_eia(stamp: str) -> dict | None:
             out["year"] = 1900 + int(tail[:2])
             out["week"] = int(tail[2:4])
     return out
+
+
+# Fender tube-chart year letters (2-letter code: year + month; scheme starts A=1951).
+TUBE_CHART_YEARS = {
+    "A": 1951, "B": 1952, "C": 1953, "D": 1954, "E": 1955, "F": 1956, "G": 1957,
+    "H": 1958, "I": 1959, "J": 1960, "K": 1961, "L": 1962, "M": 1963, "N": 1964,
+    "O": 1965, "P": 1966, "Q": 1967,
+}
+
+
+def decode_tube_chart(code: str) -> dict | None:
+    """Decode a Fender tube-chart date code. First letter = year, second = month
+    (A=Jan..L=Dec). Torn charts may carry only the year letter."""
+    c = (code or "").strip().upper()
+    if not c or c[0] not in TUBE_CHART_YEARS:
+        return None
+    month = (ord(c[1]) - 64) if len(c) > 1 and "A" <= c[1] <= "L" else None
+    return {"year": TUBE_CHART_YEARS[c[0]], "month": month}
+
+
+def extract_build_years(bom) -> set[int]:
+    """Collect plausible build years from a BOM's date codes (EIA + tube chart)."""
+    years: set[int] = set()
+    for comp in bom.items:
+        dc = (comp.date_code or "").strip()
+        if not dc:
+            continue
+        if len(dc) <= 2 and dc[0].upper() in TUBE_CHART_YEARS:
+            tc = decode_tube_chart(dc)
+            if tc:
+                years.add(tc["year"])
+            continue
+        eia = decode_eia(dc)
+        if eia and eia.get("year"):
+            years.add(eia["year"])
+    return years

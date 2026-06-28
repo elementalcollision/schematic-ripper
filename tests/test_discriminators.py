@@ -22,11 +22,13 @@ def _bassman_signatures():
         required_tubes=["5881", "7025"],
     )
     return [
-        CircuitSignature(model="6G6-B", transformer_part_numbers=["125P7A"], **common),
+        CircuitSignature(model="6G6-B", transformer_part_numbers=["125P7A"],
+                         date_code_range=(1962, 1963), **common),
         CircuitSignature(
             model="6G6-C",
             transformer_part_numbers=["125P7A", "125C1A", "125A13A"],
             diagnostic_values={"plate_supply": "430V"},
+            date_code_range=(1963, 1964),
             **common,
         ),
     ]
@@ -45,6 +47,24 @@ def test_transformer_stamp_resolves_6g6c():
     )
     ranked = discriminators.rank(bom, _bassman_signatures())
     assert ranked[0][0].model == "6G6-C"  # unique transformer stamps win
+
+
+def test_date_code_separates_revisions():
+    # A 1964 choke date code is inside 6G6-C's window (1963-64) and outside
+    # 6G6-B's (1962-63), pushing the verdict decisively to 6G6-C.
+    bom = BOM(
+        source="t",
+        items=[
+            Component(type=ComponentType.TUBE, part_number="5881", provenance=_human()),
+            Component(type=ComponentType.TUBE, part_number="7025", provenance=_human()),
+            Component(type=ComponentType.CHOKE, part_number="125C1A",
+                      date_code="606-4-20", provenance=_human()),
+        ],
+    )
+    report = provenance.assess(bom, _bassman_signatures())
+    assert report.identified_model == "6G6-C"
+    dc = next(r for r in report.feature_matches if r.feature == "date_code")
+    assert dc.verdict == "match" and "1964" in (dc.observed or "")
 
 
 def test_value_match_is_boundary_aware():

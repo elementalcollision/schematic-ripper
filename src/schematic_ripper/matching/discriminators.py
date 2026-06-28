@@ -16,11 +16,13 @@ import re
 
 from .. import values
 from ..models import BOM, CircuitSignature, ComponentType, FeatureMatch
+from ..reference import knowledge_base
 
 # Weights — hard discriminators dominate.
 W_RECTIFIER = 5.0
 W_TRANSFORMER = 4.0
 W_TUBE = 3.0
+W_DATE = 3.0
 W_VALUE = 1.0
 
 
@@ -105,6 +107,25 @@ def score_signature(bom: BOM, sig: CircuitSignature) -> list[FeatureMatch]:
                 observed=value if present else None,
                 verdict="match" if present else "unknown",
                 weight=W_VALUE,
+            )
+        )
+
+    # --- Build date vs revision window (date codes, hard) ---
+    if sig.date_code_range:
+        lo, hi = sig.date_code_range
+        years = knowledge_base.extract_build_years(bom)
+        if years:
+            verdict = "match" if any(lo <= y <= hi for y in years) else "mismatch"
+            observed = ",".join(str(y) for y in sorted(years))
+        else:
+            verdict, observed = "unknown", None
+        rows.append(
+            FeatureMatch(
+                feature="date_code",
+                expected=f"{lo}–{hi}",
+                observed=observed,
+                verdict=verdict,
+                weight=W_DATE,
             )
         )
 
