@@ -1,0 +1,26 @@
+# Fender Bassman 6G6-C — reference signature.
+# Source: hand transcription of sample_schematics/Fender_bassman_6g6c.pdf (a
+# Fender factory SCHEMATIC). Last of the 6G6 series, ~1963-1964.
+signature:
+  model: "6G6-C"
+  family: "Fender Bassman"
+  rectifier_type: "solid_state"   # diode bridge feeding all heaters + pilot (per schematic)
+  required_tubes:
+    - "5881"   # ×2 power
+    - "7025"   # ×4 preamp/PI
+  transformer_part_numbers:
+    # All three read directly off the 6G6-C schematic's parts callouts:
+    - "125P7A"    # TR1 power transformer
+    - "125C1A"    # TR2 choke
+    - "125A13A"   # TR3 output transformer
+  diagnostic_values:
+    presence_pot: "25K"
+    bass_pot: "250K"
+    treble_pot: "250K"
+    volume_pot: "1M"
+    plate_supply: "430V"     # +430V / +428V / +420V plate rail (per schematic)
+  date_code_range: [1963, 1964]
+  notes: >
+    Electrically near-identical to 6G6-B. The strongest positive identification
+    of 6G6-C over 6G6-B is the full set of transformer part numbers
+    125P7A / 125C1A / 125A13A stamped on the iron, plus the +430V plate rail.

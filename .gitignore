@@ -1,0 +1,41 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# --- uv ---
+uv.lock
+
+# --- CodeGraph (local, rebuildable index) ---
+.codegraph/
+
+# --- Schematic Ripper ---
+# Per-analysis outputs are reproducible from inputs; don't version them.
+runs/
+*.log
+
+# Input binaries are the user's own photos + copyrighted reference scans.
+# Keep them local; the repo tracks the directory structure + READMEs, not the
+# bitmaps/PDFs. Drop your own inputs into these dirs to run the pipeline.
+source_images/*
+!source_images/.gitkeep
+!source_images/README.md
+sample_schematics/*
+!sample_schematics/.gitkeep
+!sample_schematics/README.md
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+
+# --- Secrets ---
+.env
+*.key

@@ -1,0 +1,60 @@
+{
+  "source": "source_images/ (first-pass, human-confirmed)",
+  "items": [
+    {
+      "type": "CE", "value": "20uF", "voltage": "500VDC", "manufacturer": "Sprague",
+      "raw_marking": "SPRAGUE ATOM TVA1906 20uF 500VDC 65C",
+      "provenance": [{"method": "human", "confidence": 0.95, "source_image": "IMG_0983.jpeg", "note": "modern replacement filter cap (recap)"}]
+    },
+    {
+      "type": "CE", "value": "80uF", "manufacturer": "Nichicon",
+      "raw_marking": "NICHICON 80 MFD",
+      "provenance": [{"method": "human", "confidence": 0.9, "source_image": "IMG_0983.jpeg", "note": "modern replacement filter cap (recap)"}]
+    },
+    {
+      "type": "CE", "value": "22uF", "voltage": "50V", "manufacturer": "Vishay",
+      "raw_marking": "Vishay 22u 50V",
+      "provenance": [{"method": "human", "confidence": 0.85, "source_image": "IMG_0987.jpeg", "note": "modern replacement cathode bypass"}]
+    },
+    {
+      "type": "C", "value": "0.1uF", "voltage": "400VDC", "manufacturer": "Good-All",
+      "raw_marking": "GOOD-ALL TYPE N-503 .1 MFD 400 V.D.C.",
+      "provenance": [{"method": "human", "confidence": 0.9, "source_image": "IMG_0989.jpeg", "note": "period-correct molded paper cap"}]
+    },
+    {
+      "type": "C", "value": "0.1uF", "voltage": "400VDC",
+      "raw_marking": "MOLDED .1mfd 400vdc Made in U.S. OUTSIDE FOIL",
+      "provenance": [{"method": "human", "confidence": 0.9, "source_image": "IMG_0986.jpeg", "note": "period-correct molded paper cap"}]
+    },
+    {
+      "type": "C", "value": "0.047uF", "voltage": "400VDC",
+      "raw_marking": "MOLDED .047 mfd 400 vdc Made in U.S.",
+      "provenance": [{"method": "human", "confidence": 0.9, "source_image": "IMG_0987.jpeg", "note": "period-correct molded paper cap"}]
+    },
+    {
+      "type": "C", "value": "0.25uF", "voltage": "400VDC",
+      "raw_marking": "MOLDED .25 mfd 400 vdc Made in U.S.",
+      "provenance": [{"method": "human", "confidence": 0.9, "source_image": "IMG_0986.jpeg", "note": "period-correct molded paper cap"}]
+    },
+    {
+      "type": "V", "part_number": "5881",
+      "provenance": [{"method": "human", "confidence": 0.7, "source_image": "IMG_0983.jpeg", "note": "inferred from octal power-socket complement; confirm against tube chart"}]
+    },
+    {
+      "type": "V", "part_number": "5881",
+      "provenance": [{"method": "human", "confidence": 0.7, "source_image": "IMG_0983.jpeg", "note": "inferred from octal power-socket complement; confirm against tube chart"}]
+    },
+    {
+      "type": "V", "part_number": "7025",
+      "provenance": [{"method": "human", "confidence": 0.6, "note": "inferred from 9-pin preamp-socket complement; confirm against tube chart"}]
+    },
+    {
+      "type": "V", "part_number": "7025",
+      "provenance": [{"method": "human", "confidence": 0.6, "note": "inferred from 9-pin preamp-socket complement; confirm against tube chart"}]
+    },
+    {
+      "type": "R", "value": "carbon comp (various)",
+      "provenance": [{"method": "human", "confidence": 0.8, "source_image": "IMG_0988.jpeg", "note": "period-correct carbon-composition resistors"}]
+    }
+  ]
+}

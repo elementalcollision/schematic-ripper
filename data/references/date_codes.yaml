@@ -1,0 +1,24 @@
+# Vintage dating reference tables. Extend the data; don't hard-code in Python.
+
+# EIA source codes (first 3 digits of a date-stamped part) for vendors most
+# relevant to 1960s Fender amps.
+eia_source_codes:
+  "606": "Schumacher"   # Fender's primary transformer supplier
+  "137": "CTS"          # potentiometers, speakers
+  "304": "Stackpole"    # pots, carbon-comp resistors
+  "274": "Jensen"       # speakers
+
+# How to read the tail of an EIA stamp in 1960s context.
+eia_stamp_format:
+  description: >
+    SSSYWW or SSSYYWW — three source digits, then year and week. Single-digit
+    year is interpreted within the 1960s decade (e.g. '6' => 1966). Example:
+    '606-341' => Schumacher (606), 1963 (3), week 41 (... format varies by vendor).
+
+# Construction cues that date / authenticate a chassis (qualitative, for the
+# genuine-vs-clone axis).
+construction_cues:
+  period_correct_caps: ["Astron", "Good-All", "Cornell-Dubilier", "molded paper"]
+  period_correct_resistors: ["carbon composition", "Stackpole", "Allen-Bradley"]
+  service_replacement_caps: ["Sprague Atom", "Nichicon", "F&T", "modern Vishay"]
+  wire: "cloth-covered push-back (yellow/tan) is correct for the era"

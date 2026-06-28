@@ -1,0 +1,28 @@
+# Fender Bassman 6G6-B — reference signature.
+# Source: hand transcription of sample_schematics/Fender_bassman_6g6b.pdf (a
+# Fender factory LAYOUT diagram). Blonde/white piggyback era, ~1962-1963.
+#
+# Provenance note: values marked (confirm) are legible but should be double-checked
+# against a clean schematic scan before being trusted as hard discriminators.
+signature:
+  model: "6G6-B"
+  family: "Fender Bassman"
+  # 6G6-B dropped the tube rectifier of the earlier 6G6/6G6-A for silicon diodes
+  # (the layout shows a diode array in the power supply). This separates B/C from A.
+  rectifier_type: "solid_state"
+  required_tubes:
+    - "5881"   # ×2 power
+    - "7025"   # ×4 preamp/PI (7025 = low-noise 12AX7)
+  transformer_part_numbers:
+    - "125P7A"   # power transformer (shared across blonde Bassman; confirm stamp)
+  diagnostic_values:
+    presence_pot: "25K"      # 25K-L presence (read off layout)
+    bass_pot: "250K"         # 250K-A
+    treble_pot: "250K"       # 250K with 70K tap
+    volume_pot: "1M"         # 1M-A
+  date_code_range: [1962, 1963]
+  notes: >
+    Two-channel Normal + Bass with a shared Presence control. Discriminating
+    6G6-B from 6G6-C comes down to bias-circuit and coupling-cap value revisions,
+    plus the output-transformer part number — encode those once a clean 6G6-B
+    schematic (not just the layout) is transcribed.
