@@ -6,13 +6,13 @@ human baseline the automated pipeline is built to reproduce and extend.
 
 ## Verdict (preliminary)
 
-> **A genuine early-1960s Fender "Bassman" of the 6G6 family (6G6-B / 6G6-C,
-> blonde piggyback era, ~1962–1964), since serviced — the filter caps, several
-> electrolytics, and the transformers have been replaced. Distinguishing 6G6-B
-> from 6G6-C cannot be done from these nine frames alone, and the non-OE
-> transformers don't help; it needs the bias/coupling-cap values and the tube chart.**
+> **A genuine Fender "Bassman" 6G6-C (the last of the blonde-piggyback series),
+> built ~1964 and since serviced. The power and output transformers are non-OE
+> replacements and the filter caps have been redone — but the original Schumacher
+> choke (125C1A, dated 1964 week 20) survives and pins both the model and the year.**
 
-Confidence: **family — high; exact revision — low (B vs C unresolved).**
+Confidence: **genuine — high; revision — 6G6-C, now positively evidenced by the
+original choke (was "6G6 family" on the first nine photos alone).**
 
 ## Evidence
 
@@ -46,19 +46,30 @@ Confidence: **family — high; exact revision — low (B vs C unresolved).**
 - The `6G6-C` schematic additionally names the iron: **TR1 125P7A** (power),
   **TR2 125C1A** (choke), **TR3 125A13A** (output), with a **+430 V** plate rail.
 
-## What's needed to resolve 6G6-B vs 6G6-C
+## Update — chassis & iron codes (enhanced reads)
 
-The two revisions are electrically near-identical, and **the transformers here are
-non-OE (replaced), so their stamps carry no provenance weight** — they're excluded.
-That leaves the circuit itself and the surviving original parts. To close the gap:
-1. **Bias circuit + a few coupling-cap values** — the residual electrical
-   differences between 6G6-B and 6G6-C live here; transcribe them from the board.
-2. **Tube chart / preamp tube layout** — confirm the 5881 × 2 / 7025 × 4 count
-   directly rather than inferring from sockets.
-3. **Pot date codes** (EIA, e.g. `137-YYWW` CTS) — to pin the build year against
-   the 1962–64 window; pots are usually original even when the iron is not.
-4. **Chassis & original-part stamps** — the Fender chassis ink-stamp and any
-   surviving original component date codes.
+Four further photos (IMG_0971/0972/0981/0982) were enhanced with `vision/enhance.py`
+(crop → upscale → contrast/threshold → de-rotate) to read stamped and inked codes:
+
+| Code | Reading | Bearing on provenance |
+|---|---|---|
+| Choke (olive) | **125C1A · EIA 606-4-20** | **original** Schumacher choke; `125C1A` is the 6G6-C's choke P/N, dated **1964 wk 20** |
+| Chassis (stamped) | **…P11840** (digits certain, prefix at crop edge) | original chassis stamp |
+| Transformer (chrome) | **W022798 / 1279 / 0537** | non-OE replacement |
+| Transformer (black) | **W018343** | non-OE replacement |
+| Chassis (inked) | **illegible** | ink corroded into the metal — needs a raking-light re-shoot |
+
+**Effect on the verdict.** Re-running the matcher with these reads flips the
+identification from "6G6 family / 6G6-B" to **6G6-C (38%, genuine/modified)** — the
+`125C1A` choke is listed by the 6G6-C signature but not 6G6-B, and its 1964 date
+code sits squarely in the 6G6-C window. Authenticity holds on the *original* choke
+while the two replaced transformers are flagged as modification, not as a clone
+(`sripper analyze --bom tests/fixtures/sample_bom_with_codes.json`).
+
+**Still open:** the inked chassis stamp (a date/inspector mark) is too degraded in
+this frame to read; a low-angle raking-light photo would likely recover it. The
+6G6-B↔6G6-C residual circuit differences (bias network, a few coupling-cap values)
+remain a nice-to-have confirmation but are no longer needed for the model call.
 
 The pipeline's `extract` → human-confirm → `analyze` loop is designed to ingest
 exactly these follow-up photos and tighten the verdict.

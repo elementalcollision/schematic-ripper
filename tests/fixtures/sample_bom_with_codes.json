@@ -1,0 +1,56 @@
+{
+  "source": "source_images/ (first pass + enhanced chassis/iron code reads)",
+  "items": [
+    {
+      "type": "L", "part_number": "125C1A", "date_code": "606-4-20", "manufacturer": "Schumacher",
+      "raw_marking": "125C1A -606-4-20",
+      "provenance": [{"method": "human", "confidence": 0.9, "source_image": "IMG_0982.jpeg", "note": "original Fender choke; EIA 606 Schumacher, 1964 week 20 (enhanced read)"}]
+    },
+    {
+      "type": "T", "part_number": "W022798", "manufacturer": "unknown",
+      "raw_marking": "W022798 1279 0537",
+      "provenance": [{"method": "human", "confidence": 0.85, "source_image": "IMG_0981.jpeg", "note": "non-OE replacement transformer (enhanced read)"}]
+    },
+    {
+      "type": "T", "part_number": "W018343", "manufacturer": "unknown",
+      "raw_marking": "W018343",
+      "provenance": [{"method": "human", "confidence": 0.85, "source_image": "IMG_0982.jpeg", "note": "non-OE replacement transformer (enhanced read)"}]
+    },
+    {
+      "type": "CE", "value": "20uF", "voltage": "500VDC", "manufacturer": "Sprague",
+      "raw_marking": "SPRAGUE ATOM TVA1906 20uF 500VDC 65C",
+      "provenance": [{"method": "human", "confidence": 0.95, "source_image": "IMG_0983.jpeg", "note": "modern replacement filter cap (recap)"}]
+    },
+    {
+      "type": "CE", "value": "80uF", "manufacturer": "Nichicon",
+      "raw_marking": "NICHICON 80 MFD",
+      "provenance": [{"method": "human", "confidence": 0.9, "source_image": "IMG_0983.jpeg", "note": "modern replacement filter cap (recap)"}]
+    },
+    {
+      "type": "C", "value": "0.1uF", "voltage": "400VDC", "manufacturer": "Good-All",
+      "raw_marking": "GOOD-ALL TYPE N-503 .1 MFD 400 V.D.C.",
+      "provenance": [{"method": "human", "confidence": 0.9, "source_image": "IMG_0989.jpeg", "note": "period-correct molded paper cap"}]
+    },
+    {
+      "type": "C", "value": "0.047uF", "voltage": "400VDC",
+      "raw_marking": "MOLDED .047 mfd 400 vdc Made in U.S.",
+      "provenance": [{"method": "human", "confidence": 0.9, "source_image": "IMG_0987.jpeg", "note": "period-correct molded paper cap"}]
+    },
+    {
+      "type": "V", "part_number": "5881",
+      "provenance": [{"method": "human", "confidence": 0.7, "source_image": "IMG_0983.jpeg", "note": "inferred from octal power-socket complement; confirm against tube chart"}]
+    },
+    {
+      "type": "V", "part_number": "5881",
+      "provenance": [{"method": "human", "confidence": 0.7, "source_image": "IMG_0983.jpeg", "note": "inferred from octal power-socket complement; confirm against tube chart"}]
+    },
+    {
+      "type": "V", "part_number": "7025",
+      "provenance": [{"method": "human", "confidence": 0.6, "note": "inferred from 9-pin preamp-socket complement; confirm against tube chart"}]
+    },
+    {
+      "type": "R", "value": "carbon comp (various)",
+      "provenance": [{"method": "human", "confidence": 0.8, "source_image": "IMG_0988.jpeg", "note": "period-correct carbon-composition resistors"}]
+    }
+  ]
+}

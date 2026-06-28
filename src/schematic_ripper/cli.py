@@ -124,5 +124,28 @@ def decode(
     console.print("[yellow]no value parsed[/yellow]")
 
 
+@app.command()
+def enhance(
+    src: Path = typer.Argument(..., help="Source image."),
+    out: Path = typer.Option(..., "--out", help="Output PNG path."),
+    box: str = typer.Option(None, "--box", help="Relative crop 'x0,y0,x1,y1' in 0..1."),
+    scale: int = typer.Option(3, "--scale"),
+    rotate: int = typer.Option(0, "--rotate", help="Rotate degrees CCW (90/-90/180)."),
+    equalize: bool = typer.Option(False, "--equalize"),
+    invert: bool = typer.Option(False, "--invert"),
+    flip: bool = typer.Option(False, "--flip", help="Mirror horizontally (chrome bells)."),
+    threshold: int = typer.Option(None, "--threshold", help="Binarize at 0..255."),
+) -> None:
+    """Enhance a crop of an image to read a faint stamped/inked code."""
+    from .vision import enhance as enh
+
+    b = tuple(float(x) for x in box.split(",")) if box else None
+    p, size = enh.enhance(
+        src, out, box=b, scale=scale, rotate=rotate,
+        equalize=equalize, invert=invert, flip_h=flip, threshold=threshold,
+    )
+    console.print(f"wrote [cyan]{p}[/cyan] ({size[0]}×{size[1]})")
+
+
 if __name__ == "__main__":
     app()
