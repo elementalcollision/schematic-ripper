@@ -17,6 +17,16 @@
       "provenance": [{"method": "human", "confidence": 0.85, "source_image": "IMG_0982.jpeg", "note": "non-OE replacement transformer (enhanced read)"}]
     },
     {
+      "type": "X", "part_number": "BP11840",
+      "raw_marking": "BP11840 (stamped chassis)",
+      "provenance": [{"method": "human", "confidence": 0.95, "source_image": "IMG_0972.jpeg", "note": "Fender chassis serial; BP prefix = Bassman Piggyback (user-confirmed)"}]
+    },
+    {
+      "type": "X", "part_number": "83 3369",
+      "raw_marking": "83 3369 (inked chassis, tentative)",
+      "provenance": [{"method": "human", "confidence": 0.4, "source_image": "IMG_0971.jpeg", "note": "inked chassis stamp; tentative read, likely production/inspector mark"}]
+    },
+    {
       "type": "CE", "value": "20uF", "voltage": "500VDC", "manufacturer": "Sprague",
       "raw_marking": "SPRAGUE ATOM TVA1906 20uF 500VDC 65C",
       "provenance": [{"method": "human", "confidence": 0.95, "source_image": "IMG_0983.jpeg", "note": "modern replacement filter cap (recap)"}]

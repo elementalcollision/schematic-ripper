@@ -54,17 +54,20 @@ Four further photos (IMG_0971/0972/0981/0982) were enhanced with `vision/enhance
 | Code | Reading | Bearing on provenance |
 |---|---|---|
 | Choke (olive) | **125C1A · EIA 606-4-20** | **original** Schumacher choke; `125C1A` is the 6G6-C's choke P/N, dated **1964 wk 20** |
-| Chassis (stamped) | **…P11840** (digits certain, prefix at crop edge) | original chassis stamp |
+| Chassis (stamped) | **BP11840** | Fender serial — **BP = Bassman Piggyback** prefix; independently confirms a piggyback Bassman |
 | Transformer (chrome) | **W022798 / 1279 / 0537** | non-OE replacement |
 | Transformer (black) | **W018343** | non-OE replacement |
-| Chassis (inked) | **illegible** | ink corroded into the metal — needs a raking-light re-shoot |
+| Chassis (inked) | **83 3369** (tentative) | inked production / inspector mark; low-confidence read (ink corroded into the metal) |
 
 **Effect on the verdict.** Re-running the matcher with these reads flips the
 identification from "6G6 family / 6G6-B" to **6G6-C (38%, genuine/modified)** — the
 `125C1A` choke is listed by the 6G6-C signature but not 6G6-B, and its 1964 date
 code sits squarely in the 6G6-C window. Authenticity holds on the *original* choke
 while the two replaced transformers are flagged as modification, not as a clone
-(`sripper analyze --bom tests/fixtures/sample_bom_with_codes.json`).
+(`sripper analyze --bom tests/fixtures/sample_bom_with_codes.json`). The stamped
+serial **BP11840** independently corroborates the model — `BP` is Fender's prefix
+for the **B**assman **P**iggyback — though the build year stays pinned by the choke
+(Fender serials aren't sequential enough to date on their own).
 
 **Still open:** the inked chassis stamp (a date/inspector mark) is too degraded in
 this frame to read; a low-angle raking-light photo would likely recover it. The

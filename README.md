@@ -41,9 +41,9 @@ add-on once a human has traced nets.
 
 > **First pass (9 photos): 6G6-B · 37%.** After enhancing four more photos to read the chassis & iron codes, the original `125C1A` choke (1964) flips it to **6G6-C · 38% · genuine (modified)** — runner-up 6G6-B. The two replaced transformers are flagged as modification, not a clone.
 
-**Reading a faint code** — `vision/enhance.py` crops, upscales, de-rotates and contrast-boosts a region so a stamped/inked code becomes legible. The stamped chassis number, recovered from a phone photo:
+**Reading a faint code** — `vision/enhance.py` crops, upscales, de-rotates and contrast-boosts a region so a stamped/inked code becomes legible. The stamped chassis serial — **BP11840**, whose `BP` prefix is Fender's Bassman-Piggyback code — recovered from a phone photo:
 
-<img src="docs/images/evidence_chassis_stamp.png" alt="Enhanced stamped chassis code" width="100%">
+<img src="docs/images/evidence_chassis_stamp.png" alt="Enhanced stamped chassis serial BP11840" width="100%">
 
 More renders from `sripper generate`: [block diagram](docs/images/6G6-C_block.svg) · [detailed gain stage](docs/images/6G6-C_gainstage.svg).
 

@@ -28,3 +28,15 @@ construction_cues:
     Non-OE (aftermarket) transformer part-number stamps are NOT provenance evidence
     — they reflect a re-transformer, not the amp's origin. Date the amp from chassis
     stamps, pot date codes, and surviving original-part date codes instead.
+
+# Fender model serial-number prefixes (brown/blonde/blackface piggyback era).
+# A chassis serial identifies the MODEL, not a precise year — Fender serials were
+# not strictly sequential, so date the build from the tube chart or the iron.
+serial_prefixes:
+  "BP": "Bassman Piggyback"     # e.g. BP11840 on this chassis
+
+# Fender tube-chart 2-letter date code (stamped 1953-1967): 1st letter = year,
+# 2nd letter = month (A=Jan .. L=Dec). Full year scheme starts A=1951.
+tube_chart_date_codes:
+  note: "1st letter = year, 2nd letter = month (A=Jan..L=Dec)."
+  years: {J: 1960, K: 1961, L: 1962, M: 1963, N: 1964, O: 1965, P: 1966, Q: 1967}
